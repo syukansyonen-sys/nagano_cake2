@@ -1,16 +1,20 @@
 class Admin::ItemsController < ApplicationController
+   before_action :authenticate_admin!
   def new
     @item = Item.new
   end
 
   def create
     item = Item.new(item_params)
-    item.save
-    redirect_to #リダイレクト先は未設定
+   if item.save
+       redirect_to admin_item_path(@item.id)
+   else
+    render :new
+   end
   end
 
   def index
-    @items = Item.all
+    @items = Item.page(params[:page]).per(10)
   end
 
   def show
@@ -23,10 +27,14 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.update(item_params)
+    if @item.update(item_params)
+      redirect_to admin_item_path(@item.id)
+    else
+      render :edit
+    end
   end
 
   def item_params
-    params.require(:item).permit(:name, :introduction, :image)#保存カラムは未指定
+    params.require(:item).permit(:name, :introduction, :image, :genre_id, :price, :is_active)
   end
 end
