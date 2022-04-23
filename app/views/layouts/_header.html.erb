@@ -1,0 +1,57 @@
+<header>
+  <nav class="navbar navbar-expand-lg border">
+    <div class="container">
+      <span>ながのCAKE</span>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+        <% if customer_signed_in? %>
+          <li>
+            <%= link_to customers_my_page, class: 'nav-link text-dark border' do %>
+              <p>マイページ</p>
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to items_path, class: 'nav-link text-dark border' do %>
+              <p>商品一覧</p>
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to cart_items_path, class: 'nav-link text-dark border' do %>
+              <p>カート</p>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link text-dark border' do %>
+              <P>ログアウト</P>
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to about_path, class: 'nav-link text-dark border' do %>
+              <P>About</P>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to items_path, class: 'nav-link text-dark border' do %>
+              <P>商品一覧</P>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_customer_registration_path,class: 'nav-link text-dark border' do %>
+              <P>新規登録</P>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to customer_session_path ,class: 'nav-link text-dark border' do %>
+              <P>ログイン</P>
+            <% end %>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
