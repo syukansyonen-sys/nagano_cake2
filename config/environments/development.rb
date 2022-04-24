@@ -74,4 +74,5 @@ config.hosts << "b74a3af742d04c7b8365d4c8a2215458.vfs.cloud9.ap-northeast-1.amaz
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
   config.hosts << "690f039aacd64d91a845df7fef4fd379.vfs.cloud9.us-east-1.amazonaws.com"
+  config.hosts << "8e4f96b7341743ef9bdf9c1a18f9a1c3.vfs.cloud9.us-east-1.amazonaws.com"
 end
