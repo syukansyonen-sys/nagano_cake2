@@ -9,7 +9,7 @@
         <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
           <li>
-            <%= link_to customers_my_page, class: 'nav-link text-dark border' do %>
+            <%= link_to customers_my_page_path, class: 'nav-link text-dark border' do %>
               <p>マイページ</p>
             <% end %>
           </li>
@@ -54,4 +54,9 @@
       </div>
     </div>
   </nav>
+  <div class="text-center">
+   <% if customer_signed_in? %>
+      ようこそ、<%= current_customer.last_name %>さん！
+   <% end %>
+  </div>
 </header>

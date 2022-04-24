@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: "homes#top"
   get '/home/about' => 'homes#about', as: "about"
-  
+
   #顧客用
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
@@ -22,7 +22,7 @@ scope module: :public do
   get '/customers/out' => '/public/customers#out'
   patch '/customers/quit' => '/public/customers#quit'
   resources :addresses, only: [:index, :create, :destroy, :edit, :update]
-  resources :oders, only: [:new, :create, :index, :show]
+  resources :orders, only: [:new, :create, :index, :show]
   post '/orders/check' => '/public/orders#check'
   get '/orders/thanx' => '/public/orders#thanx'
 end
