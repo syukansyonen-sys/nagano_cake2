@@ -17,10 +17,10 @@ scope module: :public do
   resources :items, only: [:index, :show]
   resources :cart_items, only: [:index, :create, :update, :destroy]
   delete '/cart_items/reset' => '/public/cart_items#reset'
+  patch '/customers/quit' => '/public/customers#quit'
   resources :customers, only: [:edit, :update]
   get '/customers/my_page' => '/public/customers#show'
   get '/customers/out' => '/public/customers#out'
-  patch '/customers/quit' => '/public/customers#quit'
   resources :addresses, only: [:index, :create, :destroy, :edit, :update]
   resources :orders, only: [:new, :create, :index, :show]
   post '/orders/check' => '/public/orders#check'
