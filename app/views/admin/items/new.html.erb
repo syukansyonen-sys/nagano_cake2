@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class="col-sm-10 px-sm-0 mx-auto mb-5">
-      <%= form_with model: Item.new do |f| %>
+      <%= form_with model: @item,url: admin_items_path do |f| %>
       <table>
         <tr>
           <div class="form-group">
@@ -29,7 +29,7 @@
         <tr>
           <div class="form-group">
             <th>ジャンル</th>
-            <td></td>
+            <td><%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--選択してください--" %></td>
             </div>
         </tr>
         <tr>
