@@ -1,19 +1,43 @@
-<h2>商品詳細</h2>
-
-<h4>商品画像</h4>
-  <%= f.file_field :image, accept: "image/*" %>
-
-  <h4>商品名</h4>
-  <%= @item.name %>
-
-  <h4>商品説明</h4>
-  <%= @item.introduction %>
-
-  <h4>ジャンル</h4>
-
-  <h4>税込価格（税抜価格）</h4>
-  <%= f.text_field :price %>
-
-  <h4>販売ステータス</h4>
-
-  <%= link_to "編集する", edit_admin_item_path(item.id) %>
+<div class="container">
+  <h2>商品詳細</h2>
+    <div class="row">
+      <div class="col">
+      </div>
+      <div class="col">
+        <table class="table">
+            <tr>
+              <th>商品名</th>
+              <td><%= @item.name %></td>
+            </tr>
+            <tr>
+              <th>商品説明</th>
+              <td><%= @item.introduction %></td>
+            </tr>
+            <tr>
+              <th>ジャンル</th>
+              <td><%= @item.genre.name %></td>
+            </tr>
+            <tr>
+              <th>
+                  税込価格<br>
+                  (税抜き価格)
+              </th>
+              <td><%= @item.add_tax_price.to_s(:delimited) %>(<%= @item.price %>)円</td>
+            </tr>
+            <tr>
+              <th>販売ステータス</th>
+                <td>
+                     <% if @item.is_active == true %>
+                        <p class="text-success ">販売中</p>
+                     <% else %>
+                        <p class="text-secondary ">販売停止中</p>
+                     <% end %>
+                </td>
+            </tr>
+          </table>
+          <div><!--classを指定-->
+            <p><%= link_to '編集する', edit_admin_item_path(@item.id), class: 'btn btn-success' %></p>
+          </div>
+      </div>
+   </div>
+ </div>

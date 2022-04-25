@@ -1,5 +1,5 @@
 class Public::CartItemsController < ApplicationController
-  before_action :authenticate_customer!
+  
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer_id
@@ -19,7 +19,11 @@ class Public::CartItemsController < ApplicationController
   end
   
   def reset
+    @cart_items = current_customer.cart_items
+    @cart_items.destroy_all
+    redirect_to cart_items_path
   end
+  
   def subtotal
     item.with_tax_price * amount
   end
