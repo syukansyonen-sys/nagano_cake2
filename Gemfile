@@ -60,3 +60,4 @@ gem 'devise-i18n-views'
 gem 'devise-i18n'
 gem "enum_help"
 gem 'kaminari','~> 1.2.1'
+gem 'pry-rails'

@@ -2,69 +2,64 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
-  <!--名前(姓名)-->
-  <p>名前</p>
-  <div class="field">
-    <%= f.label t('.last_name') %>
-    <%= f.text_field :last_name, autofocus: true %>
-  </div>
-  <div class="field">
-    <%= f.label t('.first_name') %>
-    <%= f.text_field :first_name, autofocus: true %>
-  </div>
-
-  <!--名前(カナ)-->
-  <p>フリガナ</p>
-  <div class="field">
-    <%= f.label t('.last_name_kana') %>
-    <%= f.text_field :last_name_kana, autofocus: true %>
-  </div>
-  <div class="field">
-    <%= f.label t('.first_name_kana') %>
-    <%= f.text_field :first_name_kana, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label t('.email') %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <!--郵便番号-->
-  <div class="field">
-    <%= f.label t('.postal_code') %>
-    <%= f.text_field :postal_code, autofocus: true %>
-  </div>
-
-  <!--住所-->
-  <div class="field">
-    <%= f.label t('.address') %>
-    <%= f.text_field :address, autofocus: true %>
-  </div>
-
-  <!--電話番号-->
-  <div class="field">
-    <%= f.label t('.phone_number') %>
-    <%= f.text_field :phone_number, autofocus: true %>
-  </div>
-
-  <div class="field">
+<table>
+  <tr>
+    <th>名前</th>
+    <td>
+      <%= f.label t('.last_name') %>
+      <%= f.text_field :last_name, autofocus: true %>
+    </td>
+    <td>
+      <%= f.label t('.first_name') %>
+      <%= f.text_field :first_name %>
+    </td>
+  </tr>
+  <tr>
+    <th>フリガナ</th>
+    <td>
+    　<%= f.label t('.last_name_kana') %>
+      <%= f.text_field :last_name_kana %>
+    </td>
+    <td>
+      <%= f.label t('.first_name_kana') %>
+      <%= f.text_field :first_name_kana %>
+    </td>
+  </tr>
+  <tr>
+    <th><%= f.label t('.email') %></th>
+    <td><%= f.email_field :email, autocomplete: "email" %></td>
+  </tr>
+  <tr>
+    <th><%= f.label t('.postal_code') %></th>
+    <td><%= f.text_field :postal_code %></td>
+  </tr>
+  <tr>
+    <th><%= f.label t('.address') %></th>
+    <td><%= f.text_field :address %></td>
+  </tr>
+  <tr>
+    <th><%= f.label t('.phone_number') %></th>
+    <td><%= f.text_field :phone_number %></td>
+  </tr>
+  <tr>
+    <th>
     <%= f.label t('.password') %>
     <% if @minimum_password_length %>
     <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
     <% end %>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label t('.password_confirmation') %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    </th>
+    <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+  </tr>
+  <tr>
+    <th><%= f.label t('.password_confirmation') %></th>
+    <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+  </tr>
+</table>
 
   <div class="actions">
     <%= f.submit "新規登録" %>
   </div>
 <% end %>
 
-<h2>既に登録済みの方</h2>
+<h4>既に登録済みの方</h4>
 <%= render "public/shared/links" %>

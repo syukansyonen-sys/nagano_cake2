@@ -5,10 +5,10 @@
     <th>会員ID</th>
     <td><%= @customer.id %></td>
   </tr>
-  <%= form_with model: @customer do |f| %>
+  <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch, local: true do |f| %>
   <tr>
     <th>氏名</th>
-    <td><%= f.text_field :last_name %></td>
+    <td><%= f.text_field :last_name, autofocus: true %></td>
     <td><%= f.text_field :first_name %></td>
   </tr>
   <tr>
@@ -34,7 +34,13 @@
   </tr>
   <tr>
     <th>会員ステータス</th>
-    <td><%= f.text_field :is_status %></td>
+      <td>
+        <%= f.radio_button :is_status, :false, checked: true %>
+        <%= f.label :is_status, "有効", {value: :false, style: "display: inline-block;"} %>
+        <%= f.radio_button :is_status, :true %>
+    　   <%= f.label :is_status, "退会", {value: :true, style: "display: inline-block;"} %>
+    　</td>
   </tr>
-  <% end %>
 </table>
+    <%= f.submit "変更を保存" %>
+  <% end %>

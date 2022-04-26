@@ -16,7 +16,7 @@ class Admin::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     @customer.update(customer_params)
     # 会員詳細ページへリダイレクト
-    redirect_to :show
+    redirect_to action: :show
   end
 
   private
