@@ -1,3 +1,4 @@
+<p id="notice"><%= notice %></p>
 <div class="container">
   <div class="row">
     <div class="col-sm-8 px-sm-0 offset-sm-1">
@@ -29,7 +30,7 @@
         <tr>
           <div class="form-group">
             <th>ジャンル</th>
-            <td></td>
+            <td><%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--選択してください--" %></td>
             </div>
         </tr>
         <tr>

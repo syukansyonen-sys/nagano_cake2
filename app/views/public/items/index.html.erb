@@ -1,18 +1,26 @@
 <div class="container">
   <div class="row">
-    <div class="col">
-      <h1>商品一覧</h1><h4>(全<%= @items.count %>件)</h4>
+    <div class="col-sm-12 px-sm-0">
+      <h1>商品一覧
+      <span style="font-size : 12pt">(全<%= @items.count %>件)</span>
+      </h1>
     </div>
   </div>
   <div class="row">
       <% @items.each do |item| %>
-      <div class="col">
+      <div class="col-xs-10 col-sm-10 col-md-6 col-lg-3">
        <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
-        <%= link_to item_path(item.id) %>
+        <%= link_to item_path(item.id) do %>
+        <% if item.image.attached? %>
+        <%= image_tag item.image, size: "200x150" %>
+        <% else %>
+        <%= image_tag 'no_image', size: "200x150" %>
+        <% end %>
+        <% end %>
         <div class="card-body">
           <p class="item-details item-name card-text"><%= item.name %></p>
           <% if item.is_active == true %>
-            <p class="item-details card-text">¥<%= (item.price * 1.10).to_i.to_s(:delimited, delimiter: ',') %></p>
+            <p class="card-text">¥<%= item.with_tax_price.to_s(:delimited) %> </p>
           <% else %>
             <p class="text-danger font-weight-bold card-text">売り切れ</p>
         <% end %>
