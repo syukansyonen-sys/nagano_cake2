@@ -1,20 +1,21 @@
+<p id="notice"><%= notice %></p>
 <div class="container">
-    <div class="row">
-        <div class="col">
+    <div class="row justify-content-start">
+        <div class="col-5 ml-5">
             <h2>ジャンル一覧・追加</h2>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
+    <div class="row justify-content-start">
+        <div class="col-7 mt-4">
             <%= form_with model: @genre,url: admin_genres_path,method: :post, remote: true do |f| %>
-             <%= f.label :name, "ジャンル名" %>
-             <%= f.text_field :name, id: "form" %>
+             <%= f.label :name,"ジャンル名"%>
+             <%= f.text_field :name, id: "form", placeholder:"ジャンル名" %>
              <%= f.submit "新規登録", class:"btn btn-success" %>
             <% end %>
         </div>
     </div>
-     <div class="row">
-      <div class="col">
+     <div class="row justify-content-start">
+      <div class="col-7 mt-5">
         <table class="table">
           <thead>
             <tr>
