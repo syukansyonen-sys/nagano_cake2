@@ -30,7 +30,12 @@
     <td><%= @customer.email %></td>
   </tr><tr>
     <th>会員ステータス</th>
-    <td><%= @customer.is_status %></td>
+     <!--true=退会済み、false=有効-->
+         <% if @customer.is_status == true %>
+         <td>退会</td>
+         <% else %>
+         <td>有効</td>
+         <% end %>
   </tr>
 </table>
 <div class="actions">
@@ -39,4 +44,3 @@
 <div class="actions">
    <%= link_to "注文履歴一覧を見る", admin_orders_path, class: "btn btn-sm btn-primary" %>
 </div>
-

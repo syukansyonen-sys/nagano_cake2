@@ -15,10 +15,12 @@
        <!--リンクを実装する-->
        <td><%= customer.last_name + customer.first_name %></td>
        <td><%= customer.email %></td>
-       <td>
          <!--true=退会済み、false=有効-->
-         <%= customer.is_status %>
-        </td>
+         <% if customer.is_status == true %>
+         <td>退会</td>
+         <% else %>
+         <td>有効</td>
+         <% end %>
       <% end %>
     </tr>
   </tbody>
