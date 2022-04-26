@@ -1,4 +1,4 @@
-<%= form_with model:@order do |f| %>
+<%= form_with model:@order,url: orders_check_path do |f| %>
 <div class="ml-5 mt-5">
   <div class="text-center">
     <h2>注文情報入力</h2>
@@ -18,7 +18,9 @@
       <%= f.radio_button :address, "1" %>
       <%= f.label :address, "ご自身の住所" %>
       <div class="ml-4">
-        <#%= order.postal_code %>
+        <%= "〒" + @customer.postal_code %>
+        <%= @customer.address %><br>
+        <%= @customer.last_name + @customer.first_name %>
       </div>
       <%= f.radio_button :address, "2" %>
       <%= f.label :address, "登録済みの住所から選択" %>
