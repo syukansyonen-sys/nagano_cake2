@@ -15,8 +15,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 # 顧客用
 scope module: :public do
   resources :items, only: [:index, :show]
-  resources :cart_items, only: [:index, :create, :update, :destroy]
   delete '/cart_items/reset' => '/public/cart_items#reset'
+  resources :cart_items, only: [:index, :create, :update, :destroy]
   patch '/customers/quit' => '/public/customers#quit'
   resources :customers, only: [:edit, :update]
   get '/customers/my_page' => '/public/customers#show'
