@@ -1,15 +1,16 @@
 <div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col-3 mt-3 mb-3">
             <h2>ジャンル編集</h2>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col">
-            <%= form_with model: @genre,url: admin_genre_path, method: :patch, local: true do |f| %>
-            <div class="form-group">
+    <div class="row justify-content-start">
+        <div class= "col-1">
+              <%= form_with model: @genre,url: admin_genre_path, method: :patch, local: true do |f| %>
+             </div>
               <%= f.label "ジャンル名",class:"form-label" %>
+             <div class="col-3">
               <%= f.text_field :name,class:"form-control" %>
             </div>
             <div class="col-md justify-content-around">
