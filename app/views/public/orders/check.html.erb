@@ -1,38 +1,47 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
-    <%=form_with model:order%>
-    <div class='col-md-10'>
+    <div class='col-md-7'>
       <h2>注文情報確認</h2>
-      <table class='table table-hover table-inverse'>
-        <thead>
-          <tr>
-            <th>商品名</th>
-            <th>単価（税込）</th>
-            <th>数量</th>
-            <th>小計</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @item.name %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
     </div>
     <div class='col-md-4'>
-      <table class='table table-hover table-inverse'>
-        <tr>
-          <th>送料</th>
-          <th>800</th>
-        </tr>
-        <tr>
-          <th>商品合計</th>
-          <th></th>
-        </tr>
-        <tr>
-          <th>請求金額</th>
-          <th></th>
-        </tr>
+      <tr>
+        <th>送料</th>
+        <th>800</th>
+      </tr>
+      <tr>
+        <th>商品合計</th>
+        <th></th>
+      </tr>
+      <tr>
+        <th>請求金額</th>
+        <th></th>
+      </tr>
     </div>
-    <h3>支払方法</h3>
-    
-    <h3>お届け先</h3>
+    <div>
+      <h3>支払方法</h3>
+      <%= %>
+    </div>
+    <div>
+      <h3>お届け先</h3>
+        <%= "〒" + @order.postal_code %>
+        <%= @order.address %><br>
+        <%= @order.name %>
+    </div>
   </div>
 </div>
