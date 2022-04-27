@@ -1,28 +1,37 @@
+<div class= "container">
+  <div class="row">
+    <div class="col-md-8 mt-4 mb-4">
 <h2>配送先登録/一覧</h2>
-
-<!--配送先新規登録-->
+</div>
+</div>
+<div class="row justify-content-start">
+  <div class="col-md-10 mt-4 mb-4">
 <%= form_with model: @address, local: true do |f| %>
   <table>
     <tr>
+      <div class="form-group">
       <th>郵便番号(ハイフンなし)</th>
-      <td><%= f.text_field :postal_code %></td>
+      <td><%= f.text_field :postal_code,placeholder:"1112222" %></td>
+      </div>
     </tr>
     <tr>
       <th>住所</th>
-      <td><%= f.text_field :address %></td>
+      <td><%= f.text_field :address,placeholder:"東京都渋谷区代々木上園町0-0", :size =>"50*50" %></td>
     </tr>
     <tr>
       <th>宛名</th>
-      <td><%= f.text_field :name %></td>
+      <td><%= f.text_field :name,placeholder:"令和道子" %>
+          <%= f.submit "新規登録",class:"btn btn-success"%>
+      </td>
     </tr>
   </table>
-  <%= f.submit "新規登録" %>
 <% end %>
-
-<!--配送先一覧-->
-
-  <table>
-    <thead>
+</div>
+</div>
+<div class= "row">
+  <div class= "col-md-7 mt-5">
+ <table class= "table table-bordered mb-5">
+    <thead class="thead-light">
      <tr>
        <th>郵便番号</th>
        <th>住所</th>
@@ -44,5 +53,8 @@
     </tbody>
   <% end %>
   </table>
+  </div>
+  </div>
+  </div>
 
 
