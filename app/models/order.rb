@@ -8,4 +8,7 @@ class Order < ApplicationRecord
   }
 
   enum address_option:[:"ご自身の住所", :"登録済みの住所から選択", :"新しいお届け先"]
+  def ship_cost
+    self.shipping_cost = 800
+  end
 end

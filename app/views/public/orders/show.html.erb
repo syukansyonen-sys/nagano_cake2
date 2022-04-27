@@ -11,7 +11,9 @@
       <tr>
         <td>配送先</td>
         <td>
-          <%= order.postal_code %><%= order.address %><%= order.name %>
+          <%= @order.postal_code %>
+          <%= @order.address %>
+          <%= @order.name %>
         </td>
       </tr>
       <tr>
@@ -32,7 +34,7 @@
         </tr>
         <tr>
           <td>配送料</td>
-          <td>8</td>
+          <td></td>
         </tr>
         <tr>
           <td>ご請求額</td>
@@ -54,9 +56,9 @@
       <tbody>
         <% @orders.each do |order| %>
         <tr>
-          <td>@item.name</td>
           <td></td>
-          <td>coun</td>
+          <td></td>
+          <td></td>
           <td></td>
         </tr>
       </tbody>

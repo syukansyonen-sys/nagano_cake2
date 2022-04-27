@@ -7,6 +7,7 @@ class Public::OrdersController < ApplicationController
   def check
     @order = Order.new
     @cart_items = CartItem.all
+    @order.ship_cost #800円
     if params[:order][:address_option] == "1"
 
       @order.payment_method = (params[:order][:payment_method])
@@ -37,8 +38,9 @@ class Public::OrdersController < ApplicationController
 
   def create
     order = Order.new(order_params)
+    order.status = 0
     order.save
-    redirect_to '/orders/check'
+    redirect_to '/orders/thanx'
   end
 
   def thanx
@@ -46,6 +48,7 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = Order.all
+    
   end
 
   def show
@@ -55,6 +58,6 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :address_id, :address_option)
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :customer_id, :shipping_cost, :total_payment)
   end
 end

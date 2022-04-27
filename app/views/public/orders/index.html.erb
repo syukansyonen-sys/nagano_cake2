@@ -17,9 +17,11 @@
           <tr>
             <td></td>
             <td>
-              <%= order.postal_code %><%= order.address %><%= order.name %>
+              <%= "〒" + order.postal_code %><br>
+              <%= order.address %><br>
+              <%= order.name %>
             </td>
-            <td><%= @item.name %></td>
+            <td><%#= .name %></td>
             <td><%= order.total_payment %></td>
             <td></td>
             <td>
