@@ -5,17 +5,23 @@ class Public::OrdersController < ApplicationController
   end
 
   def check
-    @order = Order.new(order_params)
-    if params[:order][:address] == "1"
+    @order = Order.new
+    @cart_items = CartItem.all
+    if params[:order][:address_option] == "1"
+
+      @order.payment_method = (params[:order][:payment_method])
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
-      @order.name = current_customer.name
-    elsif params[:order][:address] == "2"
+      @order.name = current_customer.last_name + current_customer.first_name
+    elsif params[:order][:address_option] == "2"
+      @order.payment_method = (params[:order][:payment_method])
       address = Address.find(params[:order][:address_id])
       @order.postal_code = address.postal_code
       @order.address = address.address
       @order.name = address.name
-    elsif params[:order][:address] == "3"
+    elsif params[:order][:address_option] == "3"
+
+      @order.payment_method = (params[:order][:payment_method])
       address = Address.new
       address.customer_id = current_customer.id
       address.postal_code = params[:order][:postal_code]
@@ -49,6 +55,6 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :address_id)
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :address_id, :address_option)
   end
 end
