@@ -4,3 +4,4 @@ ja:
       payment_method: # カラム名
         credit_card: 'クレジットカード' # enumの値
         transfer: '銀行振込'
+

@@ -11,8 +11,13 @@ class Public::AddressesController < ApplicationController
   def create
     address = Address.new(address_params)
     address.customer_id = current_customer.id
-    address.save
-    redirect_to action: :index
+    if address.save
+       flash[:notice] = "配送先の新規登録が完了しました。"
+        redirect_to action: :index
+    else
+      flash[:notice] = "配送先の新規登録内容に不備があります。"
+      render :new
+    end
   end
 
   def destroy

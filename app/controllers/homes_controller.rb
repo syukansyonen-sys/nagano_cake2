@@ -2,8 +2,8 @@ class HomesController < ApplicationController
 
 
   def top
-    # s商品をidの順番で並べ
-    @items = Item.order(:id).limit(4)
+    # 商品をidの逆順で並べ替えて、4件取得
+    @items = Item.order(id: :DESC).limit(4)
 
   end
 
