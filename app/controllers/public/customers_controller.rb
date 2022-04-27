@@ -9,8 +9,13 @@ class Public::CustomersController < ApplicationController
 
   def update
     customer = current_customer
-    customer.update(customer_params)
-    redirect_to customers_my_page_path(current_customer)
+    if customer.update(customer_params)
+      flash[:notice] = "会員情報の変更が完了しました。"
+      redirect_to action: :show
+    else
+      flash[:alert] = "会員情報の変更内容に不備があります。"
+      render :edit
+    end
   end
 
   def out
