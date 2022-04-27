@@ -11,7 +11,7 @@
   </div>
   <div class= "row">
    <div class = "col-12">
-    <table class="table table-hover table-bordered">
+    <table class="table table-bordered">
      <thead class="thead-light">
       <tr>
        <th>商品名</th>
@@ -77,8 +77,8 @@
  <% else %>
   <div class= "row justify-content-center mt-5">
    <div class"col-10">
-     <p>お客様のショッピングカートに商品はありません</p>
-     <p><%= link_to "商品一覧", items_path, class: "btn-link" %>から商品をお探し下さい。</p>
+     <p><span style="font-size : 25pt">お客様のショッピングカートに商品はありません</span></p>
+     <p><span style="font-size : 20pt"><%= link_to "商品一覧", items_path, class: "btn-link" %>から商品をお探し下さい。</span></p>
    </div>
  </div>
 <% end %>
