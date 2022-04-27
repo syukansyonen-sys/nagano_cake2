@@ -1,20 +1,21 @@
+<div class= "container">
+  <div class="row justify-content-start mt-4 mb-3">
 <%= form_with model:@order,url: orders_check_path do |f| %>
-<div class="ml-5 mt-5">
-  <div class="text-center">
     <h2>注文情報入力</h2>
-  </div>
-  <div>
+    </div>
+    <div class= "row">
     <h4>支払方法</h4>
-    <div class="ml-4">
+    </div>
+    <div class="col-md-10">
       <%= f.radio_button :payment_method, "credit_card" %>
       <%= f.label :payment_method, "クレジットカード" %><br>
       <%= f.radio_button :payment_method, "transfer" %>
       <%= f.label :payment_method, "銀行振込" %>
     </div>
-  </div>
-  <div>
+    <div class= "row">
     <h4>お届け先</h4>
-    <div class="ml-4">
+    </div>
+    <div class= "col">
       <%= f.radio_button :address_option, "1" %>
       <%= f.label :address_option, "ご自身の住所" %>
       <div class="ml-4">
@@ -29,21 +30,20 @@
       </div>
       <%= f.radio_button :address_option, "3" %>
       <%= f.label :address_option, "新しいお届け先" %><br>
-      <div class="ml-4">
-        <div>
-          <span>郵便番号</span><%= f.text_field :postal_code %>
-        </div>
-        <div>
-          <span>住所</span><%= f.text_field :address %>
-        </div>
-        <div>
-          <span>宛名</span><%= f.text_field :name %>
-        </div>
       </div>
-    </div>
-  </div>
-  <div class="text-center">
+      <div class= "col">
+        <div class="ml-4">
+          <div class="col-4 ml-4">
+          <span>郵便番号（ハイフンなし)</span></div>
+          <%= f.text_field :postal_code ,placeholder:"1112222"%>
+          <br>
+          <span>住所</span><%= f.text_field :address,placeholder:"東京都渋谷区代々木上園町0-0", :size =>"50*50" %><br>
+          <span>宛名</span><%= f.text_field :name,placeholder:"令和道子" %><br>
+          </div>
+          </div>
+        </div>
+      <div class="text-center">
     <%= f.submit "確認画面へ進む", class: "btn btn-sm btn-success" %>
-  </div>
-</div>
+   </div>
+ </div>
 <% end %>
