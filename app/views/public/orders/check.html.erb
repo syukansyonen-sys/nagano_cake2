@@ -21,6 +21,7 @@
             <td><%= cart_item.subtotal.to_s(:delimited) %></td>
           </tr>
         </tbody>
+        <% @sum += cart_item.subtotal %>
         <% end %>
       </table>
     </div>
@@ -28,7 +29,7 @@
       <table class='table table-hover table-inverse'>
         <tr>
           <th>送料</th>
-          <th><%#= shipping_cost %></th>
+          <th><%= @order.shipping_cost %></th>
         </tr>
         <tr>
           <th>商品合計</th>
@@ -36,7 +37,7 @@
         </tr>
         <tr>
           <th>請求金額</th>
-          <th><%#= shipping_cost + @sum.to_s(:delimited) %></th>
+          <th><%= @order.shipping_cost + @sum %></th>
         </tr>
       </table>
     </div>
@@ -56,7 +57,16 @@
     </div>
   </div>
   <div class='row'>
-    <%= form_with model:@order,url: orders_thanx_path do |f| %>
+    <%= form_with model:@order,url: orders_path do |f| %>
+      <%= f.hidden_field :customer_id, value: current_customer.id %>
+      <%= f.hidden_field :shipping_cost, value: @order.shipping_cost %>
+      <%= f.hidden_field :total_payment, value: @order.total_payment %>
+      <%= f.hidden_field :payment_method, value: @order.payment_method %>
+      <%#= f.hidden_field :status, value:  %>
+      <%= f.hidden_field :name, value: @order.name %>
+      <%= f.hidden_field :address, value: @order.address %>
+      <%= f.hidden_field :postal_code, value: @order.postal_code %>
+
       <%= f.submit "注文を確定する", class: "btn btn-sm btn-success" %>
     <% end %>
   </div>
