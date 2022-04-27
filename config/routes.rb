@@ -22,9 +22,10 @@ scope module: :public do
   get '/customers/my_page' => '/public/customers#show'
   get '/customers/out' => '/public/customers#out'
   resources :addresses, only: [:index, :create, :destroy, :edit, :update]
-  resources :orders, only: [:new, :create, :index, :show]
   post '/orders/check' => '/public/orders#check'
   get '/orders/thanx' => '/public/orders#thanx'
+  resources :orders, only: [:new, :create, :index, :show]
+
 end
 
 # 管理者用
