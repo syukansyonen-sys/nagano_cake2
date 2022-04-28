@@ -3,12 +3,12 @@
     <div class="container">
       <div class="mr-5 border rounded p-2 bg-warning border-white">
         <% if admin_signed_in? %>
-        <%= link_to "naganoCAKE", admin_orders_path, class:"header-title navbar-brand"%>
+        <%= link_to "NaganoCAKE", admin_orders_path, class:"header-title navbar-brand"%>
         <% else %>
         <%= link_to "NaganoCAKE", root_path, class:"header-title navbar-brand"%>
         <% end %>
       </div>
-      <div class="text-center">
+      <div class="text-center font-weight-bold">
         <% if customer_signed_in? %>
           ようこそ、<%= current_customer.last_name %>さん！
         <% end %>
@@ -22,22 +22,22 @@
         <!--顧客側がログインした場合-->
         <% if customer_signed_in? %>
           <li>
-            <%= link_to customers_my_page_path, class: 'nav-link text-dark border rounded mr-2' do %>
+            <%= link_to customers_my_page_path, class: 'nav-link text-white border rounded mr-2 bg-success' do %>
             <i class="fas fa-users"></i>マイページ
             <% end %>
           </li>
           <li>
-            <%=  link_to items_path, class: 'nav-link text-dark border rounded mx-2' do %>
+            <%=  link_to items_path, class: 'nav-link text-white border rounded mx-2 bg-success' do %>
             <i class="fas fa-cheese"></i>商品一覧
             <% end %>
           </li>
           <li>
-            <%=  link_to cart_items_path, class: 'nav-link text-dark border rounded mx-2' do %>
+            <%=  link_to cart_items_path, class: 'nav-link text-white border rounded mx-2 bg-success' do %>
             <i class="fas fa-shopping-cart"></i>カート
             <% end %>
           </li>
           <li>
-            <%= link_to  destroy_customer_session_path, method: :delete, class: 'nav-link text-dark border rounded ml-2' do %>
+            <%= link_to  destroy_customer_session_path, method: :delete, class: 'nav-link text-white border rounded ml-2 bg-success' do %>
             <i class="fas fa-sign-out-alt"></i>ログアウト
             <% end %>
           </li>
@@ -45,27 +45,27 @@
         <!--管理者がログインしていた場合-->
         <% elsif admin_signed_in? %>
            <li>
-            <%= link_to admin_items_path, class: 'nav-link text-dark border rounded mr-2' do %>
+            <%= link_to admin_items_path, class: 'nav-link text-white border rounded mr-2 bg-success' do %>
             <i class="fas fa-cheese"></i>商品一覧
             <% end %>
           </li>
           <li>
-            <%=  link_to admin_customers_path, class: 'nav-link text-dark border rounded mx-2' do %>
+            <%=  link_to admin_customers_path, class: 'nav-link text-white border rounded mx-2 bg-success' do %>
             <i class="fas fa-users"></i>会員一覧
             <% end %>
           </li>
           <li>
-            <%=  link_to admin_orders_path, class: 'nav-link text-dark border rounded mx-2' do %>
+            <%=  link_to admin_orders_path, class: 'nav-link text-white border rounded mx-2 bg-success' do %>
             <i class="fas fa-list-alt"></i>注文履歴一覧
             <% end %>
           </li>
           <li>
-            <%=  link_to admin_genres_path, class: 'nav-link text-dark border rounded mx-2' do %>
+            <%=  link_to admin_genres_path, class: 'nav-link text-white border rounded mx-2 bg-success' do %>
             <i class="fas fa-list-ul"></i>ジャンル一覧
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark border  rounded ml-2' do %>
+            <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-white border rounded ml-2 bg-success' do %>
             <i class="fas fa-sign-out-alt"></i>ログアウト
             <% end %>
           </li>

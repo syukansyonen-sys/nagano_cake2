@@ -62,13 +62,13 @@ class Public::OrdersController < ApplicationController
   def index
     @orders = current_customer.orders
 
-    
+
   end
 
   def show
     @order = Order.find(params[:id])
     @cart_items = current_customer.cart_items.all
-    
+
   end
 
   private
