@@ -12,36 +12,36 @@
             <tr>
               <th>名前</th>
               <td><%= f.label t('.last_name') %></td>
-              <td><%= f.text_field :last_name, autofocus: true %></td>
+              <td><%= f.text_field :last_name, placeholder: "令和", autofocus: true %></td>
               <td><%= f.label t('.first_name') %></td>
-              <td><%= f.text_field :first_name %></td>
+              <td><%= f.text_field :first_name, placeholder: "道子" %></td>
             </tr>
             <tr>
               <th>フリガナ</th>
               <td><%= f.label t('.last_name_kana') %></td>
-              <td><%= f.text_field :last_name_kana %></td>
+              <td><%= f.text_field :last_name_kana, placeholder: "レイワ" %></td>
               <td><%= f.label t('.first_name_kana') %></td>
-              <td><%= f.text_field :first_name_kana %></td>
+              <td><%= f.text_field :first_name_kana, placeholder: "ミチコ" %></td>
             </tr>
             <tr>
               <th><%= f.label t('.email') %></th>
               <td></td>
-              <td><%= f.email_field :email, autocomplete: "email" %></td>
+              <td><%= f.email_field :email, placeholder: "sample@example.com", autocomplete: "email" %></td>
             </tr>
             <tr>
               <th><%= f.label t('.postal_code') %></th>
               <td></td>
-              <td><%= f.text_field :postal_code %></td>
+              <td><%= f.text_field :postal_code, placeholder: "1112222" %></td>
             </tr>
             <tr>
               <th><%= f.label t('.address') %></th>
               <td></td>
-              <td><%= f.text_field :address %></td>
+              <td colspan="3"><%= f.text_field :address, placeholder: "東京都渋谷区代々木上園町0-0", :size =>"50*50" %></td>
             </tr>
             <tr>
               <th><%= f.label t('.phone_number') %></th>
               <td></td>
-              <td><%= f.text_field :phone_number %></td>
+              <td><%= f.text_field :phone_number, placeholder: "00000000000" %></td>
             </tr>
             <tr>
               <th>

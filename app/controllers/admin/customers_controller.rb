@@ -1,7 +1,7 @@
 class Admin::CustomersController < ApplicationController
 
   def index
-    @customers = Customer.page(params[:page]).per(1)
+    @customers = Customer.page(params[:page]).per(10)
   end
 
   def show
@@ -14,10 +14,15 @@ class Admin::CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(params[:id])
-    @customer.update(customer_params)
-      flash[:notice] = "会員情報の変更が完了しました。"
+    if @customer.update(customer_params)
+       flash[:notice] = "会員情報の変更が完了しました。"
       # 会員詳細ページへリダイレクト
-      redirect_to action: :show
+        redirect_to action: :show
+    else
+      flash[:alert] = "会員情報の変更内容に不備があります。"
+      @customer = Customer.find(params[:id])
+      render :edit
+    end
   end
 
   private
