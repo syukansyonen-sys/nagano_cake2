@@ -14,6 +14,7 @@ class Public::CustomersController < ApplicationController
       redirect_to action: :show
     else
       flash[:alert] = "会員情報の変更内容に不備があります。"
+      @customer = current_customer
       render :edit
     end
   end

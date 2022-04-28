@@ -16,6 +16,7 @@ class Public::AddressesController < ApplicationController
         redirect_to action: :index
     else
       flash[:alert] = "配送先の新規登録内容に不備があります。"
+      @customer = current_customer
       @addresses = @customer.addresses
       render :index
     end
