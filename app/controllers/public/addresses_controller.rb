@@ -39,6 +39,8 @@ class Public::AddressesController < ApplicationController
        redirect_to action: :index
     else
        flash[:alert] = "配送先情報の変更内容に不備があります。"
+       @address = Address.find(params[:id])
+       render :edit
     end
   end
 
