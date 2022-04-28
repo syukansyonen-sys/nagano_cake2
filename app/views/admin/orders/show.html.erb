@@ -53,10 +53,10 @@
             <td><%= order_detail.item.name %></td>
             <td><%= order_detail.item.with_tax_price.to_s(:delimited) %></td>
             <td><%= order_detail.amount %></td>
-            <td><%= (order_detail.price*1.1*order_detail.amount).to_i %></td>
+            <td><%= (order_detail.price*order_detail.amount).to_i %></td>
             <td>
-              <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
-                <%#= f.select :making_status, options_from_collection_for_select(OrderDetail.making_status, :フォームで送る値(メソッド), :セレクトボックスに表示する値(メソッド)) %>
+              <%= form_with model: order_detail, url: admin_order_order_detail_path(order_detail.id), method: :patch do |f| %>
+                <%= f.select :making_status, OrderDetail.localed_making_statuses, {} %>
                 <%= f.submit "更新" , class: "btn btn-outline-success" %>
               <% end %>
             </td>
@@ -70,7 +70,7 @@
       <table class='table table-hover table-inverse'>
         <tr>
           <th>商品合計</th>
-          <th><%=  %></th>
+          <th><%= @order.total_payment - @order.shipping_cost %></th>
         </tr>
         <tr>
           <th>送料</th>
