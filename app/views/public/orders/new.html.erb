@@ -29,17 +29,29 @@
         <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %>
       </div>
       <%= f.radio_button :address_option, "3" %>
-      <%= f.label :address_option, "新しいお届け先" %><br>
-      </div>
-      <div class= "col">
-        <div class="ml-4">
-          <div class="col-4 ml-4">
-          <span>郵便番号（ハイフンなし)</span></div>
-          <%= f.text_field :postal_code ,placeholder:"1112222"%>
-          <br>
-          <span>住所</span><%= f.text_field :address,placeholder:"東京都渋谷区代々木上園町0-0", :size =>"50*50" %><br>
-          <span>宛名</span><%= f.text_field :name,placeholder:"令和道子" %><br>
-          </div>
+      <%= f.label :address_option, "新しいお届け先" %>
+     <div class="ml-4">
+        <table>
+          <tbody>
+        <tr>
+        <div class="form-group">
+        <td>
+          郵便番号(ハイフンなし)
+          </td>
+        <td><%= f.text_field :postal_code,placeholder:"1112222" %></td>
+        </div>
+        </tr>
+    <tr>
+      <td>住所</td>
+      <td><%= f.text_field :address,placeholder:"東京都渋谷区代々木上園町0-0", :size =>"50*50" %></td>
+    </tr>
+    <tr>
+      <td>宛名</td>
+      <td><%= f.text_field :name,placeholder:"令和道子" %>
+      </td>
+    </tr>
+    </tbody>
+  </table>
           </div>
         </div>
       <div class="text-center">
