@@ -26,7 +26,7 @@
                 <%= order_detail.item.name %>
               <% end %>
             </td>
-            <td><%= order.shipping_cost + @total %>円</td>
+            <td><%= order.total_payment %>円</td>
             <td><%= order.status %></td>
             <td>
               <%= link_to order_path(order.id) do %>
