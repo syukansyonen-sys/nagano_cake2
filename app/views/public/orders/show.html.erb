@@ -6,44 +6,47 @@
       <h4>注文情報</h4>
       <tr>
         <td>注文日</td>
-        <td></td>
+        <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
       </tr>
       <tr>
         <td>配送先</td>
         <td>
-          <%= @order.postal_code %>
-          <%= @order.address %>
+          <%= "〒" + @order.postal_code %><br>
+          <%= @order.address %><br>
           <%= @order.name %>
         </td>
       </tr>
       <tr>
         <td>支払方法</td>
-        <td></td>
+        <td><%= @order.payment_method_i18n %></td>
       </tr>
       <tr>
         <td>ステータス</td>
-        <td></td>
+        <td><%= @order.status %></td>
       </tr>
-      
+     </table>
     </div>
     <div class= "col-md-5">
+      <table class='table table-hover table-inverse'>
       <h4>請求情報</h4>
       　<tr>
           <td>商品合計</td>
-          <td></td>
+          <td><%= @total %></td>
         </tr>
         <tr>
           <td>配送料</td>
-          <td></td>
+          <td><%= @order.shipping_cost %></td>
         </tr>
         <tr>
           <td>ご請求額</td>
-          <td></td>
+          <td><%= @order.shipping_cost + @total %></td>
         </tr>
+      </table>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-8">
+      <table class='table table-hover table-inverse'>
       <h4>注文内容</h4>
       <thead>
         <tr>
@@ -53,15 +56,17 @@
           <td>小計</td>
         </tr>
       </thead>
+      <% @cart_items.each do |cart_item| %>
       <tbody>
-        <% @orders.each do |order| %>
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><%= cart_item.item.name %></td>
+          <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
+          <td><%= cart_item.amount %></td>
+          <td><%= cart_item.subtotal.to_s(:delimited) %></td>
         </tr>
       </tbody>
+      <% end %>
+      </table>
     </div>
   </div>
 </div>
