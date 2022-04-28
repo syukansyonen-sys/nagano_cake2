@@ -28,6 +28,9 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   protected
+  def after_sign_in_path_for(resource)
+      customers_my_page_path
+  end
   # 退会しているかを判断するメソッド
   def customer_state
     # 【処理内容1】入力されたemailからアカウントを1件取得

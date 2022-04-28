@@ -15,14 +15,16 @@ class Public::AddressesController < ApplicationController
        flash[:notice] = "配送先の新規登録が完了しました。"
         redirect_to action: :index
     else
-      flash[:notice] = "配送先の新規登録内容に不備があります。"
-      render :new
+      flash[:alert] = "配送先の新規登録内容に不備があります。"
+      @addresses = @customer.addresses
+      render :index
     end
   end
 
   def destroy
     address = Address.find(params[:id])
     address.destroy
+    flash[:notice] = "配送先情報を削除しました。"
     redirect_to action: :index
   end
 
@@ -32,8 +34,12 @@ class Public::AddressesController < ApplicationController
 
   def update
     @address = Address.find(params[:id])
-    @address.update(address_params)
-    redirect_to action: :index
+    if @address.update(address_params)
+       flash[:notice] = "配送先情報の変更が完了しました。"
+       redirect_to action: :index
+    else
+       flash[:alert] = "配送先情報の変更内容に不備があります。"
+    end
   end
 
   private

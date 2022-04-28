@@ -15,7 +15,7 @@
           <table class="text-left">
             <tr>
               <th  class="pr-4"><%= f.label t('.email') %></th>
-              <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+              <td><%= f.email_field :email, placeholder: "sample@example.com", autofocus: true, autocomplete: "email" %></td>
             </tr>
             <tr>
               <th><%= f.label t('.password') %></th>
