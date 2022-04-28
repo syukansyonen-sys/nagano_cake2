@@ -6,7 +6,8 @@ class Public::OrdersController < ApplicationController
 
   def check
     @order = Order.new
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items.all
+    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
     @order.ship_cost #800円
     if params[:order][:address_option] == "1"
 
@@ -39,7 +40,11 @@ class Public::OrdersController < ApplicationController
   def create
     order = Order.new(order_params)
     order.status = 0
-    order.save
+    #if order.save
+      #order_detail = OrdreDetail.new
+      #rder_detail.price = cart_item.item.with_tax_price
+      #order_detail.amount = cart_item.amount
+    #end
     redirect_to '/orders/thanx'
   end
 
@@ -48,11 +53,15 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = Order.all
-    
+
+    @cart_items = current_customer.cart_items.all
+    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
   end
 
   def show
-    @order = order.find(params[:id])
+    @order = Order.find(params[:id])
+    @cart_items = current_customer.cart_items.all
+    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
   end
 
   private

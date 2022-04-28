@@ -1,11 +1,13 @@
 class Admin::OrdersController < ApplicationController
   def index
     @orders = Order.all
-    @item = Item.find(params[:id])
+
   end
 
   def show
     @order = Order.find(params[:id])
+    @cart_items = current_customer.cart_items.all
+    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
   end
 
   def update
@@ -17,6 +19,6 @@ class Admin::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:status)
+    params.require(:order).permit(:making_status)
   end
 end
