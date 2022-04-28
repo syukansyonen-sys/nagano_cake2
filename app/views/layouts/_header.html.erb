@@ -1,7 +1,13 @@
 <header>
   <nav class="navbar navbar-expand-lg border-bottom border-dark">
     <div class="container">
-      <div class="mr-5 border rounded p-2"><%= link_to "ながのCAKE", root_path %></div>
+      <div class="mr-5 border rounded p-2">
+        <% if admin_signed_in? %>
+        <%= link_to "naganoCAKE", admin_orders_path, class:"header-title navbar-brand"%>
+        <% else %>
+        <%= link_to "NaganoCAKE", root_path, class:"header-title navbar-brand"%>
+        <% end %>
+      </div>
       <div class="text-center">
         <% if customer_signed_in? %>
           ようこそ、<%= current_customer.last_name %>さん！
@@ -12,6 +18,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
+
         <!--顧客側がログインした場合-->
         <% if customer_signed_in? %>
           <li>
@@ -59,6 +66,13 @@
             <%= link_to "ログイン", customer_session_path ,class: 'nav-link text-dark border ml-2' %>
           </li>
         <% end %>
+         <li>
+            <%= form_with url: items_path, method: :get, local: true do |f| %>
+            <input id="sbox4"  id="s" name="s" type="text" placeholder="Search">
+            <button id="sbtn4" type="submit"><i class="fas fa-search"></i>
+            </button>
+            <% end %>
+          </li>
         </ul>
       </div>
     </div>
