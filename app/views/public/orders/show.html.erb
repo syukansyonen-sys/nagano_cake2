@@ -31,7 +31,7 @@
       <h4>請求情報</h4>
       　<tr>
           <td>商品合計</td>
-          <td><%= @total %></td>
+          <td><%= @order.total_payment - @order.shipping_cost %></td>
         </tr>
         <tr>
           <td>配送料</td>
@@ -39,7 +39,7 @@
         </tr>
         <tr>
           <td>ご請求額</td>
-          <td><%= @order.shipping_cost + @total %></td>
+          <td><%= @order.total_payment %></td>
         </tr>
       </table>
     </div>

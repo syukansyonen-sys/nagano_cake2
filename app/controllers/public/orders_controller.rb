@@ -40,28 +40,35 @@ class Public::OrdersController < ApplicationController
   def create
     order = Order.new(order_params)
     order.status = 0
-    #if order.save
-      #order_detail = OrdreDetail.new
-      #rder_detail.price = cart_item.item.with_tax_price
-      #order_detail.amount = cart_item.amount
-    #end
-    redirect_to '/orders/thanx'
+    @cart_items = current_customer.cart_items.all
+    if order.save
+      @cart_items.each do |cart_item|
+        order_detail = OrderDetail.new
+        order_detail.order_id = order.id
+        order_detail.item_id = cart_item.item.id
+        order_detail.price = cart_item.item.with_tax_price
+        order_detail.amount = cart_item.amount
+        order_detail.save
+      end
+      @cart_items.destroy_all
+      redirect_to '/orders/thanx'
+    end
+
   end
 
   def thanx
   end
 
   def index
-    @orders = Order.all
+    @orders = current_customer.orders
 
-    @cart_items = current_customer.cart_items.all
-    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    
   end
 
   def show
     @order = Order.find(params[:id])
     @cart_items = current_customer.cart_items.all
-    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    
   end
 
   private
